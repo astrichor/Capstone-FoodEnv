@@ -1,2 +1,14 @@
 # Capstone-FoodEnv
 Capstone project for Springboard Foundations of Data Science
+
+Notes about the Food Environment Atlas download data, comprising:
+
+1.  A variable list that includes metadata about all of the variables that are mapped in the Food Environment Atlas.
+2.  Spreadsheets that contain data for each of the Food Environment Atlas categories.
+3.  County and State-level supplemental data that were used as the basis for a number of calculations in the Food Environment Atlas.
+4.  Data that were not available, not applicable, or suppressed for specific counties are denoted with blank cell or "-9999" codes.
+
+Release history:
+On August 19, 2015, 2 variables—persistent poverty counties and persistent child poverty counties—were corrected due to an error in the County-level Data Sets data product (the underlying source data). 
+The date of this file is August, 2015.
+Previous releases occurred in February 2014, November 2012, June 2012, January 2011 and Feburary 2010.
