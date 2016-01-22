@@ -1,7 +1,7 @@
 # Capstone-FoodEnv
 Capstone project for Springboard Foundations of Data Science
 
-Notes about the Food Environment Atlas download data, comprising:
+Food Environment Atlas download data:
 
 1.  A variable list that includes metadata about all of the variables that are mapped in the Food Environment Atlas.
 2.  Spreadsheets that contain data for each of the Food Environment Atlas categories.
