@@ -186,3 +186,43 @@ socioecon$FIPS <- as.numeric(as.character(socioecon$FIPS))
 socioecon$FIPS <- sprintf("%05d", socioecon$FIPS)
 colnames(socioecon) <- c("FIPS", "State", "County", "has_pers_pov", "has_pers_child_pov",
                          "is_metro", "has_pop_loss", "demo_stat", "value")
+
+
+## Find state with highest median household income across counties
+library(dplyr)
+incomestats <- socioecon %>% 
+  filter(demo_stat == 'MEDHHINC10')
+incomestats$value <- as.numeric(incomestats$value)
+incomes <- incomestats %>% 
+  group_by(State) %>% 
+  summarise(med_inc = median(value)) %>% 
+  arrange(desc(med_inc))
+head(incomes)   # NJ
+
+# Find state with lowest median household income across counties
+tail(incomes)   # MS
+
+## Find state with greatest increase in welfare program participation
+ctyassists <- rawassist %>% 
+  group_by(State) %>% 
+  summarise(pch_all = max(PCH_SNAP_09_14) + max(PCH_NSLP_09_14) + max(PCH_SBP_09_14) +
+                      max(PCH_SFSP_09_14) + max(PCH_WIC_09_14) + max(PCH_CACFP_09_14)) %>% 
+  arrange(desc(pch_all))
+head(ctyassists)   # NV
+
+# Find state with greatest decrease in welfare program participation
+tail(ctyassists)   # ND (there is no need to look for each state's MIN rate since
+                   # the rate is at the state level, so the MIN and MAX are the same)
+
+## Find state with highest mean Natural Amenity Index
+nai <- rawhealth %>% 
+  group_by(State) %>% 
+  summarise(mean_nai = mean(NATAMEN)) %>% 
+  arrange(desc(mean_nai))
+head(nai)   # CA
+
+# Find state with lowest mean Natural Amenity Index
+tail(nai)   # MN (excluding NA values)
+
+
+## Plot access
